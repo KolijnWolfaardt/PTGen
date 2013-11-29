@@ -14,6 +14,7 @@ public class PTGen
 	int fps;
 	// last fps time
 	long lastFPS;
+	ConfigureWindow configWindow;
 	
 	public PTGen ()
 	{
@@ -26,9 +27,11 @@ public class PTGen
 		OpenGLTools.setupWindow(glSettings);
 		OpenGLTools.initGL(glSettings);
 		
-		
 		//Create the 3d Window object
 		texDisplay = new TexDisplay();
+		
+		//Create the configuration Window
+		configWindow = new ConfigureWindow();
 		
 		getDelta();
 		lastFPS = getTime();
