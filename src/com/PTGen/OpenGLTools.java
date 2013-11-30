@@ -56,11 +56,11 @@ public class OpenGLTools
 	public static void initGL(GLSettings glSettings)
 	{
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glClearColor(0.4f, 0.6f, 0.9f, 0f); 
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 
-		GL11.glOrtho(0, glSettings.getWindowWidth(),
-				glSettings.getWindowHeight(), 0, 1, -1);
+		GL11.glOrtho(0, glSettings.getWindowWidth(), glSettings.getWindowHeight(), 0, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
 		GL11.glEnable(GL11.GL_BLEND);
@@ -68,5 +68,4 @@ public class OpenGLTools
 
 		// Mouse.setGrabbed(true);
 	}
-
 }

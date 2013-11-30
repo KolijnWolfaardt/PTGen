@@ -17,5 +17,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Kolijn/workspace/PTGen/native"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Kolijn/workspace/PTGen/jar/slick-util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
