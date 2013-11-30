@@ -21,6 +21,7 @@ public class TexDisplay
 	float x = 400, y = 300;
 	/** angle of quad rotation */
 	float rotation = 0;
+	boolean enableRotation = false;
 
 	int texId;
 
@@ -78,7 +79,7 @@ public class TexDisplay
 		// Draw a Quad on the screen, which the user can move around
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, 0);
-		//GL11.glRotatef(rotation, 0f, 0f, 1f);
+		GL11.glRotatef(rotation, 0f, 0f, 1f);
 		GL11.glTranslatef(-x, -y, 0);
 
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texId);
@@ -104,7 +105,8 @@ public class TexDisplay
 	public void update(int delta)
 	{
 		// rotate quad
-		rotation += 0.15f * delta;
+		if (this.enableRotation)
+			rotation += 0.05f * delta;
 
 		if (Keyboard.isKeyDown(Keyboard.KEY_LEFT))
 			x -= 0.35f * delta;

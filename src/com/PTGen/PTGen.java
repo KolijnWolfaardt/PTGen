@@ -16,6 +16,7 @@ public class PTGen
 	long lastFPS;
 	ConfigureWindow configWindow;
 	
+	
 	public PTGen ()
 	{
 		System.out.println("Starting");	
@@ -31,7 +32,7 @@ public class PTGen
 		texDisplay = new TexDisplay();
 		
 		//Create the configuration Window
-		configWindow = new ConfigureWindow();
+		configWindow = new ConfigureWindow(texDisplay);
 		
 		getDelta();
 		lastFPS = getTime();
@@ -50,7 +51,8 @@ public class PTGen
 			Display.update();
 			Display.sync(120); 
 		}
-
+		
+		configWindow.dispose();
 		Display.destroy();
 		
 	}
