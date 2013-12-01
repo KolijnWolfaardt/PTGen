@@ -4,6 +4,7 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.glu.GLU;
 
 /**
  * This class creates and manages a window for displaying lwjgl content.
@@ -55,17 +56,22 @@ public class OpenGLTools
 	 */
 	public static void initGL(GLSettings glSettings)
 	{
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glClearColor(0.4f, 0.6f, 0.9f, 0f); 
-		GL11.glMatrixMode(GL11.GL_PROJECTION);
-		GL11.glLoadIdentity();
-
-		GL11.glOrtho(0, glSettings.getWindowWidth(), glSettings.getWindowHeight(), 0, 1, -1);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-
+		//Configure
+		//GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-
-		// Mouse.setGrabbed(true);
+		GL11.glShadeModel(GL11.GL_SMOOTH); 
+		
+		// Blue Background
+		GL11.glClearColor(0.4f, 0.6f, 0.9f, 0f);    
+		
+        
+        //Configure the perspective
+        GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glLoadIdentity();
+        GLU.gluPerspective(40f,glSettings.getWindowWidth()/glSettings.getWindowHeight(),0.1f,500f);
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        
+        GL11.glHint(GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST);  
 	}
 }
