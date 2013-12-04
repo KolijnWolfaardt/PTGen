@@ -42,6 +42,11 @@ public class TexDisplay
 		int height = 64;
 
 		ByteBuffer buf = BufferUtils.createByteBuffer(4 * width * height);
+		
+		Generator.generate(64, buf);
+		/*
+		double a = Math.random();
+		
 
 		for (int i = 0; i < width; i++)
 		{
@@ -52,7 +57,7 @@ public class TexDisplay
 				buf.put((byte) (i + j));
 				buf.put((byte) 255);
 			}
-		}
+		}*/
 
 		// Make the buffer readable by OpenGL
 		buf.flip();
@@ -97,6 +102,8 @@ public class TexDisplay
 		
 		GL11.glRotatef(rotateZ,0,0,1);
 		
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texId);
+		
 		GL11.glBegin(GL11.GL_TRIANGLES);
 		{
 			float num = 1.0f;
@@ -114,18 +121,24 @@ public class TexDisplay
 			 *  4 - Black
 			 */
 			
-			GL11.glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+			//GL11.glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+			GL11.glTexCoord2f(0.0f,1.0f);
 			GL11.glVertex3f(-num, num, 0.0f);  //1
-			GL11.glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+			//GL11.glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+			GL11.glTexCoord2f(0.0f,0.0f);
 			GL11.glVertex3f(-num, -num, 0.0f); //3
-			GL11.glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+			//GL11.glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+			GL11.glTexCoord2f(1.0f, 1.0f);
 			GL11.glVertex3f(num, num, 0.0f);   //2
 			
-			GL11.glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+			//GL11.glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+			GL11.glTexCoord2f(1.0f,0.0f);
 			GL11.glVertex3f(num, -num, 0.0f);  //4
-			GL11.glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+			//GL11.glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+			GL11.glTexCoord2f(1.0f, 1.0f);
 			GL11.glVertex3f(num, num, 0.0f);   //2
-			GL11.glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+			//GL11.glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+			GL11.glTexCoord2f(0.0f,0.0f);
 			GL11.glVertex3f(-num,-num, 0.0f);  //3
 			
 			
@@ -178,11 +191,6 @@ public class TexDisplay
 			float d = (float) (Math.cos(rotateTheta)*zoomR);
 			cameraX = (float) (Math.cos(rotateZ)*d);
 			cameraY = (float) (Math.sin(rotateZ)*d);
-			
-			System.out.println();
-			System.out.println("CameraX : "+cameraX);
-			System.out.println("CameraY : "+cameraY);
-			System.out.println("CameraZ : "+cameraZ);
 		}
 	}
 
