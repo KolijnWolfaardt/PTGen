@@ -38,26 +38,11 @@ public class TexDisplay
 	public TexDisplay()
 	{
 
-		int width = 64;
-		int height = 64;
+		int size = 2048;
 
-		ByteBuffer buf = BufferUtils.createByteBuffer(4 * width * height);
+		ByteBuffer buf = BufferUtils.createByteBuffer(4 * size * size);
 		
-		Generator.generate(64, buf);
-		/*
-		double a = Math.random();
-		
-
-		for (int i = 0; i < width; i++)
-		{
-			for (int j = 0; j < height; j++)
-			{
-				buf.put((byte) (i + j));
-				buf.put((byte) (i + j));
-				buf.put((byte) (i + j));
-				buf.put((byte) 255);
-			}
-		}*/
+		Generator.generate(size, size/4, buf);
 
 		// Make the buffer readable by OpenGL
 		buf.flip();
@@ -79,7 +64,7 @@ public class TexDisplay
 				GL11.GL_NEAREST);
 
 		// Send texel data to OpenGL
-		GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA8, width, height,
+		GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA8, size, size,
 				0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buf);
 
 	}
