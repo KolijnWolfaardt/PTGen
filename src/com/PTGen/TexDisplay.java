@@ -38,7 +38,7 @@ public class TexDisplay
 	public TexDisplay()
 	{
 
-		int size = 2048;
+		int size = 512;
 
 		ByteBuffer buf = BufferUtils.createByteBuffer(4 * size * size);
 		
